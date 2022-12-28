@@ -28,7 +28,12 @@ new_webpage =requests.get(final_link, headers=HEADERS)
 new_soup = BeautifulSoup(new_webpage.content, "html.parser")
 # print(new_soup)
 
-#extracting the title
+# extracting the title
 
 extracted_title = new_soup.find("span", attrs={"id": 'productTitle'}).text.strip()
 print(extracted_title)
+
+extracted_price = new_soup.find("span", attrs={"class": 'a-price a-text-price'}).\
+    find("span", attrs={"class": 'a-offscreen'}).text
+
+print(extracted_price)
